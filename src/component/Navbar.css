@@ -1,0 +1,193 @@
+/* 1. External Fonts & Variables */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;500&display=swap');
+
+:root {
+  --neon-purple: #bc13fe;
+  --neon-blue: #24d1ff;
+  --bg-dark: #0f0c29;
+  --gradient-main: linear-gradient(90deg, #24d1ff, #bc13fe);
+}
+
+/* 2. Navbar Container */
+.portfolio-navbar {
+  background: rgba(15, 12, 41, 0.95);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  height: 80px;
+  border-bottom: 2px solid rgba(188, 19, 254, 0.3);
+  font-family: 'Inter', sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* 3. Logo Styling */
+.logo-section .neon-text {
+  font-family: 'Orbitron', sans-serif;
+  color: #fff;
+  letter-spacing: 3px;
+  margin: 0;
+  font-size: 1.5rem;
+  text-shadow: 0 0 10px var(--neon-blue);
+}
+
+.logo-section .neon-text span {
+  color: var(--neon-blue);
+}
+
+.sub-logo {
+  font-size: 10px;
+  color: var(--neon-purple);
+  letter-spacing: 4px;
+  margin-top: -5px;
+  font-weight: bold;
+}
+
+/* 4. Menu Items */
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 3rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu li {
+  color: #a0a0c0;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  position: relative;
+  padding: 5px 10px;
+}
+
+/* 5. Hover & Active Effects */
+.nav-menu li:hover {
+  color: #fff;
+  transform: translateY(-3px) scale(1.1);
+  text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-purple);
+}
+
+.nav-menu li.active {
+  color: #fff;
+  text-shadow: 0 0 15px var(--neon-purple);
+}
+
+/* 6. Underline Animation (Pseudo-element) */
+.nav-menu li::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-main);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+  box-shadow: 0 0 8px var(--neon-blue);
+}
+
+.nav-menu li:hover::after {
+  width: 80%;
+}
+
+.nav-menu li.active::after {
+  width: 100%; /* Active-ah irukum bodhu full line irukum */
+}
+
+/* 7. Button Styling */
+.hire-me-neon {
+  background: var(--gradient-main);
+  border: none;
+  padding: 10px 25px;
+  color: #fff;
+  border-radius: 50px;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(36, 209, 255, 0.4);
+  transition: 0.4s;
+}
+
+.hire-me-neon:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(188, 19, 254, 0.6);
+}
+
+/* --- Desktop is already defined in your code --- */
+
+/* --- Tablet View (Screen width 992px kulla irundha) --- */
+@media screen and (max-width: 992px) {
+  .portfolio-navbar {
+    padding: 1rem 5%; /* Side space konjam kuraikurom */
+  }
+
+  .nav-menu {
+    gap: 20px; /* Menu gap kuraikurom */
+  }
+
+  .nav-menu li {
+    font-size: 0.9rem;
+  }
+}
+
+/* --- Mobile View (Screen width 768px kulla irundha) --- */
+@media screen and (max-width: 768px) {
+  .portfolio-navbar {
+    flex-direction: column; /* Logo, Menu, Button vertical-ah varum */
+    padding: 1rem;
+    gap: 15px;
+  }
+
+  /* Logo section center panna */
+  .logo-section {
+    text-align: center;
+  }
+
+  /* Menu-va horizontal-ah scroll panna veikalaam, appo dhaan screen-la fix aagum */
+  .nav-menu {
+    width: 100%;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px 0;
+    overflow-x: auto; /* Width pathala na scroll aagum */
+    white-space: nowrap;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .nav-menu li {
+    font-size: 0.85rem;
+    padding: 5px 10px;
+  }
+
+  .hire-me-neon {
+    width: 80%; /* Mobile-la button konjam perusa center-la irukum */
+    padding: 10px;
+  }
+}
+
+/* --- Extra Small Mobile (Screen width 480px kulla irundha) --- */
+@media screen and (max-width: 480px) {
+  .neon-text {
+    font-size: 1.2rem;
+  }
+
+  .nav-menu {
+    gap: 10px;
+  }
+
+  .nav-menu li {
+    font-size: 0.8rem;
+  }
+
+  .sub-logo {
+    font-size: 0.5rem;
+    letter-spacing: 3px;
+  }
+}

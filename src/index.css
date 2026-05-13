@@ -1,0 +1,46 @@
+/* Animation Keyframes */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Classes to apply */
+.reveal-left {
+  animation: slideInLeft 1s ease-out forwards;
+}
+
+.reveal-right {
+  animation: slideInRight 1s ease-out forwards;
+}
+
+/* Initial state: Hidden and moved to side */
+.reveal-on-scroll {
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.from-left { transform: translateX(-100px); }
+.from-right { transform: translateX(100px); }
+
+/* Final state: Visible and in position */
+.reveal-on-scroll.active {
+  opacity: 1;
+  transform: translateX(0);
+}
