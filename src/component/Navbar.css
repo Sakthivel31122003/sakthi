@@ -1,6 +1,29 @@
-/* 1. External Fonts & Variables */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;500&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;500&display=swap');
+.nav-menu li {
+  color: #a0a0c0; /* Normal color */
+  cursor: pointer;
+  transition: 0.3s ease;
+  position: relative;
+}
+
+/* Click aana item-ku intha style apply aagum */
+.nav-menu li.active {
+  color: #fff;
+  text-shadow: 0 0 10px #bc13fe, 0 0 20px #24d1ff;
+}
+
+/* Active item-ku keela chinna glow line (Optional) */
+.nav-menu li.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #24d1ff, #bc13fe);
+  box-shadow: 0 0 10px #bc13fe;
+}
 :root {
   --neon-purple: #bc13fe;
   --neon-blue: #24d1ff;
@@ -8,8 +31,9 @@
   --gradient-main: linear-gradient(90deg, #24d1ff, #bc13fe);
 }
 
-/* 2. Navbar Container */
+
 .portfolio-navbar {
+  
   background: rgba(15, 12, 41, 0.95);
   display: flex;
   justify-content: space-between;
@@ -18,12 +42,9 @@
   height: 80px;
   border-bottom: 2px solid rgba(188, 19, 254, 0.3);
   font-family: 'Inter', sans-serif;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
 }
 
-/* 3. Logo Styling */
+/* Logo Section */
 .logo-section .neon-text {
   font-family: 'Orbitron', sans-serif;
   color: #fff;
@@ -45,62 +66,29 @@
   font-weight: bold;
 }
 
-/* 4. Menu Items */
+/* Nav Links */
 .nav-menu {
   display: flex;
   list-style: none;
   gap: 3rem;
-  margin: 0;
-  padding: 0;
 }
 
 .nav-menu li {
   color: #a0a0c0;
   cursor: pointer;
   font-weight: 500;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: 0.3s;
   text-transform: uppercase;
   font-size: 0.85rem;
   letter-spacing: 1px;
-  position: relative;
-  padding: 5px 10px;
 }
 
-/* 5. Hover & Active Effects */
-.nav-menu li:hover {
+.nav-menu li:hover, .nav-menu li.active {
   color: #fff;
-  transform: translateY(-3px) scale(1.1);
-  text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-purple);
+  text-shadow: 0 0 8px var(--neon-purple);
 }
 
-.nav-menu li.active {
-  color: #fff;
-  text-shadow: 0 0 15px var(--neon-purple);
-}
-
-/* 6. Underline Animation (Pseudo-element) */
-.nav-menu li::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  background: var(--gradient-main);
-  transition: all 0.3s ease;
-  transform: translateX(-50%);
-  box-shadow: 0 0 8px var(--neon-blue);
-}
-
-.nav-menu li:hover::after {
-  width: 80%;
-}
-
-.nav-menu li.active::after {
-  width: 100%; /* Active-ah irukum bodhu full line irukum */
-}
-
-/* 7. Button Styling */
+/* Gradient Hire Button */
 .hire-me-neon {
   background: var(--gradient-main);
   border: none;
@@ -119,75 +107,76 @@
   box-shadow: 0 0 25px rgba(188, 19, 254, 0.6);
 }
 
-/* --- Desktop is already defined in your code --- */
+/* =============================================
+   6. RESPONSIVE MEDIA QUERIES
+   ============================================= */
 
-/* --- Tablet View (Screen width 992px kulla irundha) --- */
-@media screen and (max-width: 992px) {
+/* --- Tablet View (Hire Me button next line-la center-ah varum) --- */
+@media screen and (max-width: 1024px) {
   .portfolio-navbar {
-    padding: 1rem 5%; /* Side space konjam kuraikurom */
+    height: auto; /* Content-ku thaguntha maari height adjust aagum */
+    flex-wrap: wrap; /* Elements adutha line-ku poga idhu mukkiyam */
+    padding: 1.5rem 5%;
+    gap: 20px;
   }
 
-  .nav-menu {
-    gap: 20px; /* Menu gap kuraikurom */
-  }
-
-  .nav-menu li {
-    font-size: 0.9rem;
-  }
-}
-
-/* --- Mobile View (Screen width 768px kulla irundha) --- */
-@media screen and (max-width: 768px) {
-  .portfolio-navbar {
-    flex-direction: column; /* Logo, Menu, Button vertical-ah varum */
-    padding: 1rem;
-    gap: 15px;
-  }
-
-  /* Logo section center panna */
   .logo-section {
-    text-align: center;
+    flex: 1; /* Logo oru pakkam irukum */
   }
 
-  /* Menu-va horizontal-ah scroll panna veikalaam, appo dhaan screen-la fix aagum */
   .nav-menu {
-    width: 100%;
-    justify-content: center;
-    gap: 15px;
-    padding: 10px 0;
-    overflow-x: auto; /* Width pathala na scroll aagum */
-    white-space: nowrap;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
-
-  .nav-menu li {
-    font-size: 0.85rem;
-    padding: 5px 10px;
+    flex: 1; 
+    justify-content: flex-end; /* Menu matha pakkam irukum */
+    gap: 1.5rem;
   }
 
   .hire-me-neon {
-    width: 80%; /* Mobile-la button konjam perusa center-la irukum */
-    padding: 10px;
+    width: 100%; /* Full width edukumbodhu automatic-ah next line center panna mudiyum */
+    max-width: 300px;
+    margin: 0 auto; /* Center alignment */
+    order: 3; /* Last element-ah varum */
+    text-align: center;
   }
 }
 
-/* --- Extra Small Mobile (Screen width 480px kulla irundha) --- */
-@media screen and (max-width: 480px) {
-  .neon-text {
-    font-size: 1.2rem;
+/* --- Mobile View (Below 768px) --- */
+@media screen and (max-width: 768px) {
+  .portfolio-navbar {
+    flex-direction: column; /* Ellame vertical-ah maaridum */
+    text-align: center;
+    padding: 1rem;
   }
 
   .nav-menu {
-    gap: 10px;
+    width: 100%;
+    justify-content: center;
+    padding: 10px 0;
+    overflow-x: auto; /* Side scroll for mobile menu */
+    white-space: nowrap;
+    gap: 1.2rem;
+  }
+
+  .nav-menu::-webkit-scrollbar {
+    display: none;
   }
 
   .nav-menu li {
     font-size: 0.8rem;
   }
 
-  .sub-logo {
-    font-size: 0.5rem;
-    letter-spacing: 3px;
+  .hire-me-neon {
+    width: 90%;
+    margin-top: 10px;
+  }
+}
+
+/* --- Extra Small Devices --- */
+@media screen and (max-width: 480px) {
+  .logo-section .neon-text {
+    font-size: 1.2rem;
+  }
+  
+  .nav-menu li {
+    font-size: 0.75rem;
   }
 }
