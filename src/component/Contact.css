@@ -201,3 +201,72 @@
 .contact-form, .contact-info {
   flex: 1;
 }
+
+/* --- Tablet View (Max 1024px) --- */
+@media screen and (max-width: 1024px) {
+  .contact-section {
+    padding: 80px 5%;
+  }
+  
+  .contact-container {
+    grid-template-columns: 1fr; /* Stack visually */
+    gap: 40px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+}
+
+/* --- Mobile View (Max 768px) --- */
+@media screen and (max-width: 768px) {
+  .contact-header {
+    margin-bottom: 40px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  /* Info boxes side-by-side or stacking based on content */
+  .contact-info {
+    gap: 20px;
+  }
+
+  .info-box {
+    padding: 20px;
+  }
+
+  /* Resetting reveals for mobile - too much sideways movement can break UX */
+  .reveal-left, .reveal-right {
+    transform: translateY(40px); /* Move Up instead of Side */
+  }
+
+  .input-group input, 
+  .input-group textarea {
+    font-size: 0.9rem;
+  }
+}
+
+/* --- Extra Small Mobile (Max 480px) --- */
+@media screen and (max-width: 480px) {
+  .contact-section {
+    padding: 60px 20px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .send-btn {
+    font-size: 0.8rem;
+    padding: 12px;
+  }
+
+  /* Fixed for iPhone/Small screens to prevent horizontal overflow */
+  .contact-container {
+    width: 100%;
+    overflow-x: hidden;
+  }
+ 
+}
